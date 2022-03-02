@@ -45,13 +45,9 @@ foreach ($result as $record) {
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
-  <p>QRを読み取るとExpoに飛びます（React nativeの開発アプリ）Expoアプリ要インストール</p>
-  <p>現在はまだカメラロールにアクセスして画像を画面に貼り付ける機能のみです</p>
-  <div><img src="qrimg.png" alt=""></div>
-  <div>
-    <p>QRを読み取ると下記の画面が表示される。ボタンを押すとカメラロールにアクセスする</p>
-    <img src="appimg.png" alt=""></div>
+<h2></h2>
     <br>
+        <a href="CloudVision.html">ワークを開始する</a>
     <br>
     <a href="todo_logout.php">ログアウトする</a>
     <br>
@@ -74,3 +70,7 @@ foreach ($result as $record) {
   body{
     background-color: #f5deb3;
   }
+
+
+
+  
