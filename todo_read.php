@@ -45,9 +45,36 @@ foreach ($result as $record) {
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
-<h2></h2>
+  <canvas id='canvas' width='300' height='300'></canvas>  <!-- 絵を描くcanvas要素 -->
+<br><br>
+  <label><input  id="chooser" type="file" accept="image/*">プロフィール画像を設定する</label>   <!-- ファイル選択ダイアログ（カメラも使える） -->
+  <script>
+ 
+// canvas要素に描画するためのお決まりの2行
+var canvas  = document.getElementById("canvas");        // canvas 要素の取得
+var context = canvas.getContext("2d");                  // 描画用部品を取得
+ 
+// ファイルを読む（カメラを使う）準備
+var chooser = document.getElementById("chooser");       // ファイル選択用 input 要素の取得
+var reader  = new FileReader();                         // ファイルを読む FileReader オブジェクトを作成
+var image   = new Image();                              // 画像を入れておく Image オブジェクトを作成
+// ファイルを読み込む処理
+chooser.addEventListener("change", () => {              // ファイル選択ダイアログの値が変わったら
+    var file = chooser.files[0];                        // ファイル名取得
+    reader.readAsDataURL(file);                         // FileReader でファイルを読み込む
+});
+reader.addEventListener("load", () => {                 // FileReader がファイルの読み込みを完了したら
+    image.src = reader.result;                          // Image オブジェクトに読み込み結果を入れる
+});
+image.addEventListener("load", () => {                  // Image オブジェクトに画像が入ったら
+    context.drawImage(image, 0, 0, 300, 300);           // 画像を canvas に描く（Image, Left, Top, Width, Height）
+});
+ 
+</script>
+  <h2>あなたのトータルスコア</h2>
+
     <br>
-        <a href="CloudVision.html">ワークを開始する</a>
+        <a href="CloudVision.php">ワークを開始する</a>
     <br>
     <a href="todo_logout.php">ログアウトする</a>
     <br>
@@ -71,6 +98,18 @@ foreach ($result as $record) {
     background-color: #f5deb3;
   }
 
+  #canvas{
+    border: 3px solid #01751a;
+  }
 
+label {
+    padding: 10px 40px;
+    color: #ffffff;
+    background-color: #384878;
+    cursor: pointer;
+}
 
+input[type="file"] {
+    display: none;
+}
   

@@ -5,6 +5,8 @@ let url = "https://vision.googleapis.com/v1/images:annotate?key=";
 let api_url = url + KEY;
 
 score = 0
+
+
 //section 2
 //ページを読み込む際に動的にラベル検出結果表示用のテーブルを作成
 // $(function () {
