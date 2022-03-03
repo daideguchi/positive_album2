@@ -39,7 +39,7 @@ check_session_id();
 <body>
 <h3 id='title'>写真登録ワーク</h3>
 <!--- 画像をアップロードさせるためのボタンのあるエリア --->
-<div id="uploadArea"><l>良い表情の写真を選択しましょう</div>
+<div id="uploadArea"><li>良い表情の写真を選択しましょう</div>
 <!-- <div id="yubi"><img src="yubi.jpeg" alt=""></div>     -->
 <form action="list.php" method="POST" enctype="multipart/form-data">
 </l><input type="file" id="uploader1"></form>
@@ -71,8 +71,12 @@ check_session_id();
     </table>
 </div>
 <div class="resultArea2 hidden">
-    <h3>この写真のスコア</h3><h2 id="score"></h2>
+    <form action="list.php" method="POST">
+    <h3>この写真のスコア</h3><h2 id="score" name="score"></h2>
+<!-- <input type="file" name="img"> -->
+    <!-- <input type="text" name="text"> -->
  <button id="commit">登録する</button>
+    </form>
 </div>
 <a href="todo_read.php">マイページTOPへ戻る</a>
 

@@ -47,7 +47,16 @@ foreach ($result as $record) {
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
   <canvas id='canvas' width='300' height='300'></canvas>  <!-- 絵を描くcanvas要素 -->
 <br><br>
-  <label><input  id="chooser" type="file" accept="image/*">プロフィール画像を設定する</label>   <!-- ファイル選択ダイアログ（カメラも使える） -->
+<form enctype="multipart/form-data" action="prof.php" method="POST">
+  <label>
+    <input type="hidden" name="max" value="1048576" />
+    <input name="img" id="chooser" type="file" accept="image/*" />プロフィール画像を設定する
+        <input name="img" type="file" accept="image/*" />プロフィール画像を設定する
+
+    <input type="submit" value="決定">
+  </label>   <!-- ファイル選択ダイアログ（カメラも使える） -->
+  </form>
+  <a href="prof.php">php</a>
   <script>
  
 // canvas要素に描画するためのお決まりの2行
