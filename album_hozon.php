@@ -17,7 +17,7 @@ $filename = basename($file["name"]);
 $tmp_path = $file["tmp_name"];
 $file_err = $file["error"];
 $filesize = $file["size"];
-$upload_dir = "prof/";
+$upload_dir = "images/";
 // $upload_dir = "/Applications/XAMPP/xamppfiles/htdocs/gs/sotusei_4/images/";
 
 $save_filename = date("YmdHis") . $filename;
@@ -78,6 +78,9 @@ if(is_uploaded_file($tmp_path)){
     echo "ファイルが選択されていません";
 }
     echo"<br>";
+
+    header('Location:todo_read.php');
+    exit();
 ?>
   
 <a href="todo_read.php">戻る</a>

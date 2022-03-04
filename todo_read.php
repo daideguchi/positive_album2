@@ -3,6 +3,9 @@ session_start();
 include("functions.php");
 check_session_id();
 
+$files = getAllFile();
+
+
 
 $pdo = connect_to_db();
 
@@ -45,42 +48,13 @@ foreach ($result as $record) {
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
-  <canvas id='canvas' width='300' height='300'></canvas>  <!-- 絵を描くcanvas要素 -->
-<br><br>
-<form enctype="multipart/form-data" action="prof.php" method="POST">
-  <label>
-    <input type="hidden" name="max" value="1048576" />
-    <input name="img" id="chooser" type="file" accept="image/*" />プロフィール画像を設定する
-        <input name="img" type="file" accept="image/*" />プロフィール画像を設定する
+ 
+ <!-- <div id="prof">
+ </div>
+ <a href="prof_setting.php">プロフィール画像を設定する</a> -->
 
-    <input type="submit" value="決定">
-  </label>   <!-- ファイル選択ダイアログ（カメラも使える） -->
-  </form>
-  <a href="prof.php">php</a>
-  <script>
- 
-// canvas要素に描画するためのお決まりの2行
-var canvas  = document.getElementById("canvas");        // canvas 要素の取得
-var context = canvas.getContext("2d");                  // 描画用部品を取得
- 
-// ファイルを読む（カメラを使う）準備
-var chooser = document.getElementById("chooser");       // ファイル選択用 input 要素の取得
-var reader  = new FileReader();                         // ファイルを読む FileReader オブジェクトを作成
-var image   = new Image();                              // 画像を入れておく Image オブジェクトを作成
-// ファイルを読み込む処理
-chooser.addEventListener("change", () => {              // ファイル選択ダイアログの値が変わったら
-    var file = chooser.files[0];                        // ファイル名取得
-    reader.readAsDataURL(file);                         // FileReader でファイルを読み込む
-});
-reader.addEventListener("load", () => {                 // FileReader がファイルの読み込みを完了したら
-    image.src = reader.result;                          // Image オブジェクトに読み込み結果を入れる
-});
-image.addEventListener("load", () => {                  // Image オブジェクトに画像が入ったら
-    context.drawImage(image, 0, 0, 300, 300);           // 画像を canvas に描く（Image, Left, Top, Width, Height）
-});
- 
 </script>
-  <h2>あなたのトータルスコア</h2>
+  <!-- <h2>あなたのトータルスコア</h2> -->
 
     <br>
         <a href="CloudVision.php">ワークを開始する</a>
@@ -89,9 +63,16 @@ image.addEventListener("load", () => {                  // Image オブジェク
     <br>
     <br>
 
+    <h2>登録されたアルバム</h2>
+<div>
+  <?php foreach($files as $file): ?>
+    <img src="<?php echo "{$file["file_path"]}" ?>" alt="">
+    <p><?php echo h("{$file["description"]}") ?></p>
+  <?php endforeach ?>
 
+</div>
 
-          <a href="./react_native/app/sotusei/web-build/index.html">test</a>
+          <!-- <a href="./react_native/app/sotusei/web-build/index.html">test</a> -->
 
 </body>
 
@@ -122,3 +103,8 @@ input[type="file"] {
     display: none;
 }
   
+#prof{
+      border: 3px solid #01751a;
+      width: 300px;
+      height: 300px;
+}

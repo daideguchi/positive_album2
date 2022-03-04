@@ -41,18 +41,20 @@ check_session_id();
 <!--- 画像をアップロードさせるためのボタンのあるエリア --->
 <div id="uploadArea"><li>良い表情の写真を選択しましょう</div>
 <!-- <div id="yubi"><img src="yubi.jpeg" alt=""></div>     -->
-<form action="list.php" method="POST" enctype="multipart/form-data">
-</l><input type="file" id="uploader1"></form>
-<a href="list.php">list</a>
-<hr>
+<form action="album_hozon.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="max" value="1048576" />
+    <input name="img" id="uploader1" type="file" accept="image/*">
+    <!-- </l><input type="file" id="uploader1"> -->
+    <!-- <a href="list.php">list</a> -->
+    <hr>
 
-<!-- </l><input type="file" id="uploader2">
-</l><input type="file" id="uploader3">
-</l><input type="file" id="uploader4"> -->
+    <!-- </l><input type="file" id="uploader2">
+    </l><input type="file" id="uploader3">
+    </l><input type="file" id="uploader4"> -->
 
-<!--- Google Cloud Vision APIに画像ファイルを送り、得られた結果を表示するエリア --->
-<!--- 初期状態ではクラス"hidden"を付与し、CSSでhiddenクラスは表示されないよう記述します --->
-<div class="resultArea hidden">
+    <!--- Google Cloud Vision APIに画像ファイルを送り、得られた結果を表示するエリア --->
+    <!--- 初期状態ではクラス"hidden"を付与し、CSSでhiddenクラスは表示されないよう記述します --->
+    <div class="resultArea hidden">
     <!--- アップロードされた画像を表示 --->
     <div id="showPic"></div>
     <!--- ラベル検出の結果を表示 --->
@@ -60,25 +62,25 @@ check_session_id();
         <thead><tr><td><b>This picture may be about...</b></td></tr></thead>
         <tbody id="resultBox"></tbody>
     </table> -->
-</div>
-<div class="resultArea hidden">
-    <!--- 人物の表情に関する結果をレーダーチャートで表示 --->
-    <div id="chartArea"></div>
+    </div>
+    <div class="resultArea hidden">
+     <!--- 人物の表情に関する結果をレーダーチャートで表示 --->
+        <div id="chartArea"></div>
     <!--- テキスト解読の結果を表示 --->
     <!-- <table id="textTable">
         <thead><tr><td><b>This picture may contain following word(s)</b></td></tr></thead>
         <tbody id="textBox"></tbody> -->
-    </table>
-</div>
-<div class="resultArea2 hidden">
-    <form action="list.php" method="POST">
+     </table>
+     </div>
+    <div class="resultArea2 hidden">
+    <!-- <form action="album_hozon.php" method="POST"> -->
     <h3>この写真のスコア</h3><h2 id="score" name="score"></h2>
-<!-- <input type="file" name="img"> -->
+    <!-- <input type="file" name="img"> -->
     <!-- <input type="text" name="text"> -->
- <button id="commit">登録する</button>
-    </form>
-</div>
-<a href="todo_read.php">マイページTOPへ戻る</a>
+     <button id="commit">登録する</button>
+ </form>
+    </div>
+    <a href="todo_read.php">マイページTOPへ戻る</a>
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <!--- 表情分析の結果をレーダーチャートで表すために以下の二つを用います --->
