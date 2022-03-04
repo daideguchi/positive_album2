@@ -35,6 +35,7 @@ function connect_to_db()
   }
 }
 
+
 // ログイン状態のチェック関数
 function check_session_id()
 {
@@ -88,9 +89,17 @@ function getAllFile(){
   $username = $_SESSION["username"];
 
  $sql = "SELECT * FROM `file_table` WHERE `username`= '$username'";
+
+
  $fileData = connect_to_db()->query($sql);
+// var_dump($fileData);
+// exit();
+
  return $fileData;
+
 }
+
+
 
 function h($s){
    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");

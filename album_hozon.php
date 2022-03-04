@@ -82,8 +82,8 @@ if(is_uploaded_file($tmp_path)){
 }
     echo"<br>";
 
-    // header('Location:todo_read.php');
-    // exit();
+    header('Location:todo_read.php');
+    exit();
 
 ?>
   

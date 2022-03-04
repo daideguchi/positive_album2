@@ -19,7 +19,6 @@ $tmp_path = $file["tmp_name"];
 $file_err = $file["error"];
 $filesize = $file["size"];
 $upload_dir = "prof/";
-// $upload_dir = "/Applications/XAMPP/xamppfiles/htdocs/gs/sotusei_4/images/";
 
 $save_filename = date("YmdHis") . $filename;
 $save_path = $upload_dir . $save_filename;

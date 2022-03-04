@@ -4,8 +4,7 @@ let KEY = "AIzaSyBr0yaKqf3j9t0ryLmlA7ewoLY6qeDpWK4";
 let url = "https://vision.googleapis.com/v1/images:annotate?key=";
 let api_url = url + KEY;
 
-score = 0
-
+score = 0;
 
 //section 2
 //ページを読み込む際に動的にラベル検出結果表示用のテーブルを作成
@@ -34,7 +33,6 @@ $("#uploader1").change(function (evt) {
   // clear();
   $(".resultArea").removeClass("hidden");
   $(".resultArea2").removeClass("hidden");
-
 });
 
 // $("#commit").on("click", function (evt) {
@@ -129,10 +127,12 @@ function showResult(result) {
         facialExpression[k] = 10;
       }
     }
-          console.log(facialExpression);
-    score = facialExpression[0]
-    let element = document.getElementById("score")
-    element.innerHTML = `${score}/10`
+    console.log(facialExpression);
+    score = facialExpression[0];
+    let element = document.getElementById("score");
+    element.innerHTML = `${score}/10`;
+    postForm(score);
+
     //チャート描画の処理
     $("#chartArea").highcharts({
       chart: {
@@ -172,7 +172,7 @@ function showResult(result) {
   } else {
     //表情に関する結果が得られなかった場合、表示欄にはその旨を記す文字列を表示
     $("#chartArea").append(
-      "<div><b>No person can be found in the picture</b></div>"
+      "<div><b>人間の写真ではないようです。。</b></div>"
     );
   }
 
@@ -195,7 +195,6 @@ function showResult(result) {
   // }
 }
 
-
 // $("#commit").on("click", function postForm(score) {
 //     var form = document.createElement("form");
 //     var request = document.createElement("input");
@@ -212,20 +211,21 @@ function showResult(result) {
 
 //     form.submit();
 // })
-  
-function postForm(value) {
+
+
+function postForm(score) {
   var form = document.createElement("form");
   var request = document.createElement("input");
 
-  form.method = "POST";
-  form.action = "list.php";
+  // form.method = "POST";
+  // form.action = "list.php";
 
-  request.type = "hidden"; //入力フォームが表示されないように
+  // request.type = "hidden"; //入力フォームが表示されないように
   request.name = "text";
-  request.value = value;
+  request.value = score;
 
-  form.appendChild(request);
-  document.body.appendChild(form);
+  // form.appendChild(request);
+  // document.body.appendChild(form);
 
-  form.submit();
+  // form.submit();
 }

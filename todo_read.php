@@ -5,38 +5,57 @@ check_session_id();
 
 $files = getAllFile();
 
-$username = $_SESSION["username"];
+// var_dump($files);
+// exit();
 
-$pdo = connect_to_db();
+// $username = $_SESSION["username"];
 
-// $sql = 'SELECT * FROM todo_table ORDER BY deadline ASC';
-// $sql = 'SELECT * FROM todo_table WHERE is_deleted = 0 ORDER BY deadline ASC ';
-  $sql = "SELECT * FROM `file_table` WHERE `username`= '$username'";
+// $pdo = connect_to_db();
 
-  // var_dump($sql);
-  // exit();
+// $sql = 'SELECT * FROM `file_table` WHERE 1';
+// $sql = 'SELECT * FROM file_table WHERE is_deleted = 0 ORDER BY deadline ASC ';
 
-$stmt = $pdo->prepare($sql);
 
-try {
-  $status = $stmt->execute();
-} catch (PDOException $e) {
-  echo json_encode(["sql error" => "{$e->getMessage()}"]);
-  exit();
-}
+// $stmt = $pdo->prepare($sql);
 
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$output = "";
-foreach ($result as $record) {
-  $output .= "
-    <tr>
-      <td>{$record["deadline"]}</td>
-      <td>{$record["todo"]}</td>
-      <td><a href='todo_edit.php?id={$record["id"]}'>edit</a></td>
-      <td><a href='todo_delete.php?id={$record["id"]}'>delete</a></td>
-    </tr>
-  ";
-}
+// var_dump($stmt);
+// exit();
+
+
+// try {
+//   $status = $stmt->execute();
+// } catch (PDOException $e) {
+//   echo json_encode(["sql error" => "{$e->getMessage()}"]);
+//   exit();
+// }
+// var_dump($status);
+// exit();
+
+
+//GETの形式で送る（id）を飛ばすイメージ
+// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $output1 = "";
+// $output2 = "";
+
+
+//foreachで繰り返して画面に表示させるところ
+// foreach ($result as $record) {
+//   $output1 .= "
+//     <tr>
+//       <td>{$record["deadline"]}</td>
+//       <td>{$record["todo"]}</td>
+//       <td>
+//         <a href='todo_edit.php?id={$record["id"]}'>edit</a>
+//       </td>
+//       <td>
+//         <a href='todo_delete.php?id={$record["id"]}'>delete</a>
+//       </td>
+//     </tr>
+//   ";
+// }
+// var_dump($output1);
+// exit();
+
 
 ?>
 
@@ -69,9 +88,15 @@ foreach ($result as $record) {
     <h2>登録されたアルバム</h2>
 <div>
   <?php foreach($files as $file): ?>
-    <img src="<?php echo "{$file["file_path"]}" ?>" alt="">
+    <img src="<?php echo "{$file["file_path"]}" ?>" alt=""> 
+    <?php $output1 ?>
+    <a href='todo_delete.php?id=<?php echo "{$file["id"]}" ?>'>delete</a>
     <p><?php echo h("{$file["description"]}") ?></p>
+
   <?php endforeach ?>
+     <? 
+    var_dump($file);
+    exit();?>
 
 </div>
 

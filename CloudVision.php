@@ -2,32 +2,27 @@
 session_start();
 include("functions.php");
 check_session_id();
+$id = $_GET["id"];
 
-// if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-//     // 画像を取得
+$pdo = connect_to_db();
 
-// } else {
-//     // 画像を保存
-//     if (!empty($_FILES['image']['name'])) {
-//         $name = $_FILES['image']['name'];
-//         $type = $_FILES['image']['type'];
-//         $content = file_get_contents($_FILES['image']['tmp_name']);
-//         $size = $_FILES['image']['size'];
+// SQL実行
+//編集したい項目のIDを取得
+$sql = 'SELECT * FROM file_table WHERE id=:id';
 
-//         $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, created_at)
-//                 VALUES (:image_name, :image_type, :image_content, :image_size, now())';
-//         $stmt = $pdo->prepare($sql);
-//         $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-//         $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-//         $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-//         $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-//         $stmt->execute();
-//     }
-//     header('Location:list.php');
-//     exit();
-// }
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+try {
+  $status = $stmt->execute();
+} catch (PDOException $e) {
+  echo json_encode(["sql error" => "{$e->getMessage()}"]);
+  exit();
+}
+$record = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -42,11 +37,12 @@ check_session_id();
 <div id="uploadArea"><l>良い表情の写真を選択しましょう</div>
 <!-- <div id="yubi"><img src="yubi.jpeg" alt=""></div>     -->
 <form action="album_hozon.php" method="POST" enctype="multipart/form-data">
-    
+
+    <input type="hidden" name="id" value="<?= $record['id'] ?>">
     <input type="hidden" name="max" value="1048576" />
     <input name="img" id="uploader1" type="file" accept="image/*">
     <!-- </l><input type="file" id="uploader1"> -->
-    <!-- <a href="list.php">list</a> -->
+    <a href="list.php">list</a>
     <hr>
 
     <!-- </l><input type="file" id="uploader2">
