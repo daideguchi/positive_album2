@@ -54,16 +54,18 @@ function check_session_id()
 // @param string $caption 投稿の説明
 // @return bool $result
 
-function fileSave($filename, $save_path,$caption){
+function fileSave($filename, $save_path,$caption,$username){
   $result = False;
 
-  $sql = "INSERT INTO file_table (file_name, file_path, description) VALUE(?,?,?)";
+  $sql = "INSERT INTO file_table (file_name, file_path, description ,username) VALUE(?,?,?,?)";
 
   try{
     $stmt = connect_to_db()->prepare($sql);
     $stmt->bindValue(1,$filename);
     $stmt->bindValue(2,$save_path);
-    $stmt->bindValue(3,$$caption);
+    $stmt->bindValue(3,$caption);
+    $stmt->bindValue(4,$username);
+
     $result = $stmt->execute();
     return $result;
   }catch(\Exception $e){
@@ -79,9 +81,13 @@ function fileSave($filename, $save_path,$caption){
  * ファイルデータの取得
 * @return array $fileData
 */
+// var_dump($_SESSION["username"]);
+// exit();
 
 function getAllFile(){
- $sql = "SELECT * FROM file_table";
+  $username = $_SESSION["username"];
+
+ $sql = "SELECT * FROM `file_table` WHERE `username`= '$username'";
  $fileData = connect_to_db()->query($sql);
  return $fileData;
 }

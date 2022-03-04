@@ -5,12 +5,15 @@ check_session_id();
 
 // var_dump($_POST);
 // exit();
+// var_dump($_SESSION["username"]);
+// exit();
 
 $file = $_FILES["img"];
 
+
 // var_dump($file);
 // exit();
-
+$username = $_SESSION["username"];
 // ファイル関連の取得
 $file = $_FILES["img"];
 $filename = basename($file["name"]);
@@ -62,7 +65,7 @@ if(is_uploaded_file($tmp_path)){
     echo $filename . "を". $upload_dir . "にアップしました";
     // $fileData = array($filename, $save_path,$caption);
     //DBに保存(ファイル名、ファイルパス、キャプション)
-    $result = fileSave($filename, $save_path,$caption);
+    $result = fileSave($filename, $save_path,$caption,$username);
     
     if($result){
         echo "データベースに保存しました";
@@ -79,8 +82,10 @@ if(is_uploaded_file($tmp_path)){
 }
     echo"<br>";
 
-    header('Location:todo_read.php');
-    exit();
+    // header('Location:todo_read.php');
+    // exit();
+
 ?>
   
 <a href="todo_read.php">戻る</a>
+<p><?php $_SESSION["username"]?></p>

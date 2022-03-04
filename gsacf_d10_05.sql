@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost
--- 生成日時: 2022 年 3 月 04 日 06:41
+-- 生成日時: 2022 年 3 月 04 日 08:16
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.1.2
 
@@ -33,17 +33,17 @@ CREATE TABLE `file_table` (
   `file_path` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   `description` varchar(140) COLLATE utf8mb4_bin DEFAULT NULL,
   `insert_time` datetime NOT NULL DEFAULT current_timestamp(),
-  `update_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `update_time` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `username` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- テーブルのデータのダンプ `file_table`
 --
 
-INSERT INTO `file_table` (`id`, `file_name`, `file_path`, `description`, `insert_time`, `update_time`) VALUES
-(4, 'スクリーンショット 2022-02-25 22.06.29.png', 'prof/20220303171046スクリーンショット 2022-02-25 22.06.29.png', NULL, '2022-03-04 01:10:46', '2022-03-04 01:10:46'),
-(6, 'ダウンロード.jpeg', 'images/20220304063717ダウンロード.jpeg', NULL, '2022-03-04 14:37:17', '2022-03-04 14:37:17'),
-(7, 'スクリーンショット 2022-02-25 22.08.59.png', 'images/20220304063902スクリーンショット 2022-02-25 22.08.59.png', NULL, '2022-03-04 14:39:02', '2022-03-04 14:39:02');
+INSERT INTO `file_table` (`id`, `file_name`, `file_path`, `description`, `insert_time`, `update_time`, `username`) VALUES
+(13, 'スクリーンショット 2022-02-25 22.06.29.png', 'images/20220304074143スクリーンショット 2022-02-25 22.06.29.png', NULL, '2022-03-04 15:41:43', '2022-03-04 15:41:43', 'testuser02'),
+(14, 'ダウンロード.jpeg', 'images/20220304074210ダウンロード.jpeg', NULL, '2022-03-04 15:42:10', '2022-03-04 15:42:10', 'testuser01');
 
 -- --------------------------------------------------------
 
@@ -207,7 +207,7 @@ ALTER TABLE `users_table`
 -- テーブルの AUTO_INCREMENT `file_table`
 --
 ALTER TABLE `file_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- テーブルの AUTO_INCREMENT `images`

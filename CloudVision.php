@@ -39,9 +39,10 @@ check_session_id();
 <body>
 <h3 id='title'>写真登録ワーク</h3>
 <!--- 画像をアップロードさせるためのボタンのあるエリア --->
-<div id="uploadArea"><li>良い表情の写真を選択しましょう</div>
+<div id="uploadArea"><l>良い表情の写真を選択しましょう</div>
 <!-- <div id="yubi"><img src="yubi.jpeg" alt=""></div>     -->
 <form action="album_hozon.php" method="POST" enctype="multipart/form-data">
+    
     <input type="hidden" name="max" value="1048576" />
     <input name="img" id="uploader1" type="file" accept="image/*">
     <!-- </l><input type="file" id="uploader1"> -->

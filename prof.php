@@ -7,6 +7,7 @@ check_session_id();
 // exit();
 
 $file = $_FILES["img"];
+$username = $_SESSION["username"];
 
 // var_dump($file);
 // exit();
@@ -62,7 +63,7 @@ if(is_uploaded_file($tmp_path)){
     echo $filename . "を". $upload_dir . "にアップしました";
     // $fileData = array($filename, $save_path,$caption);
     //DBに保存(ファイル名、ファイルパス、キャプション)
-    $result = fileSave($filename, $save_path,$caption);
+    $result = fileSave($filename, $save_path,$caption,$username);
     
     if($result){
         echo "データベースに保存しました";

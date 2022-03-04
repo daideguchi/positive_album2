@@ -5,13 +5,16 @@ check_session_id();
 
 $files = getAllFile();
 
-
+$username = $_SESSION["username"];
 
 $pdo = connect_to_db();
 
 // $sql = 'SELECT * FROM todo_table ORDER BY deadline ASC';
-$sql = 'SELECT * FROM todo_table WHERE is_deleted = 0 ORDER BY deadline ASC ';
+// $sql = 'SELECT * FROM todo_table WHERE is_deleted = 0 ORDER BY deadline ASC ';
+  $sql = "SELECT * FROM `file_table` WHERE `username`= '$username'";
 
+  // var_dump($sql);
+  // exit();
 
 $stmt = $pdo->prepare($sql);
 
