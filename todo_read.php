@@ -88,10 +88,11 @@ $files = getAllFile();
     <h2>登録されたアルバム</h2>
 <div>
   <?php foreach($files as $file): ?>
-    <img src="<?php echo "{$file["file_path"]}" ?>" alt=""> 
+    <div><img src="<?php echo "{$file["file_path"]}" ?>" alt=""> 
     <?php $output1 ?>
     <a href='todo_delete.php?id=<?php echo "{$file["id"]}" ?>'>delete</a>
-    <p><?php echo h("{$file["description"]}") ?></p>
+    <div><?php echo h("{$file["description"]}") ?></div>
+    </div>
 
   <?php endforeach ?>
      <? 
@@ -100,7 +101,7 @@ $files = getAllFile();
 
 </div>
 
-          <!-- <a href="./react_native/app/sotusei/web-build/index.html">test</a> -->
+  <!-- <a href="./react_native/app/sotusei/web-build/index.html">test</a> -->
 
 </body>
 
@@ -136,3 +137,7 @@ input[type="file"] {
       width: 300px;
       height: 300px;
 }
+
+/* div1{
+  display: flex;
+} */

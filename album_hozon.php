@@ -20,6 +20,7 @@ $filename = basename($file["name"]);
 $tmp_path = $file["tmp_name"];
 $file_err = $file["error"];
 $filesize = $file["size"];
+// $caption = $_POST["comment"];
 $upload_dir = "images/";
 // $upload_dir = "/Applications/XAMPP/xamppfiles/htdocs/gs/sotusei_4/images/";
 
@@ -27,7 +28,7 @@ $save_filename = date("YmdHis") . $filename;
 $save_path = $upload_dir . $save_filename;
 
 // キャプションの取得
-// $caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_SPECIAL_CHARS);
+$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_SPECIAL_CHARS);
 
 //キャプションのバリデーション
 //未入力

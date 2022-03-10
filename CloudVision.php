@@ -54,6 +54,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="resultArea hidden">
     <!--- アップロードされた画像を表示 --->
     <div id="showPic"></div>
+
     <!--- ラベル検出の結果を表示 --->
     <!-- <table id="resultTable">
         <thead><tr><td><b>This picture may be about...</b></td></tr></thead>
@@ -74,6 +75,8 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
     <h3>この写真のスコア</h3><h2 id="score" name="score"></h2>
     <!-- <input type="file" name="img"> -->
     <!-- <input type="text" name="text"> -->
+        <p>この写真の感想を書いてみましょう</p>
+    <input type="text" name="caption">
      <button id="commit">登録する</button>
  </form>
     </div>
