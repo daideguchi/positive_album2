@@ -29,7 +29,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="utf-8">
     <title>positive album</title>
-    <link rel="stylesheet" type="text/css" href="CloudVision.css">
+    <link rel="stylesheet" type="text/css" href="css/CloudVision.css">
 </head>
 <body>
 <h3 id='title'>写真登録ワーク</h3>
@@ -41,8 +41,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
     <input type="hidden" name="id" value="<?= $record['id'] ?>">
     <input type="hidden" name="max" value="1048576" />
     <input name="img" id="uploader1" type="file" accept="image/*">
-    <!-- </l><input type="file" id="uploader1"> -->
-    <a href="list.php">list</a>
+
     <hr>
 
     <!-- </l><input type="file" id="uploader2">
@@ -80,7 +79,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
      <button id="commit">登録する</button>
  </form>
     </div>
-    <a href="todo_read.php">マイページTOPへ戻る</a>
+    <a href="mypage.php">マイページTOPへ戻る</a>
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <!--- 表情分析の結果をレーダーチャートで表すために以下の二つを用います --->

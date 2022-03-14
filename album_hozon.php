@@ -83,10 +83,10 @@ if(is_uploaded_file($tmp_path)){
 }
     echo"<br>";
 
-    header('Location:todo_read.php');
+    header('Location:mypage.php');
     exit();
 
 ?>
   
-<a href="todo_read.php">戻る</a>
+<a href="mypage.php">戻る</a>
 <p><?php $_SESSION["username"]?></p>

@@ -31,7 +31,7 @@
 
 <style>
   body{
-    background-image : url(topimg.jpeg);
+    background-image : url(design_image/topimg.jpeg);
     background-position: center;
     background-size: cover;
     width: 50%;

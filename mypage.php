@@ -70,7 +70,8 @@ $files = getAllFile();
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
- 
+ <p>なりたい自分</p>
+ <p>目先の目標</p>
  <!-- <div id="prof">
  </div>
  <a href="prof_setting.php">プロフィール画像を設定する</a> -->
@@ -79,7 +80,7 @@ $files = getAllFile();
   <!-- <h2>あなたのトータルスコア</h2> -->
 
     <br>
-        <a href="CloudVision.php">ワークを開始する</a>
+        <a href="work.php">ワークを開始する</a>
     <br>
     <a href="todo_logout.php">ログアウトする</a>
     <br>

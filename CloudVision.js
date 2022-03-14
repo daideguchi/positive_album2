@@ -172,7 +172,7 @@ function showResult(result) {
   } else {
     //表情に関する結果が得られなかった場合、表示欄にはその旨を記す文字列を表示
     $("#chartArea").append(
-      "<div><b>人間の写真ではないようです。。</b></div>"
+      "<div><b>人間の写真の場合は感情分析ができます</b></div>"
     );
   }
 

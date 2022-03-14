@@ -48,6 +48,6 @@ if(!$val){
     $_SESSION["username"] = $val["username"];
 
 
-    header("Location: todo_read.php");
+    header("Location: mypage.php");
     exit();
 }
