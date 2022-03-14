@@ -35,11 +35,9 @@ $("#uploader1").change(function (evt) {
   $(".resultArea2").removeClass("hidden");
 });
 
-// $("#commit").on("click", function (evt) {
-//   getImageInfo(evt);
-//   clear();
-//   $(".resultArea").removeClass("hidden");
-// });
+$("#commit").on("click", function () {
+ $(".resultArea3").removeClass("hidden");
+});
 
 //section 5
 //画像ファイルを読み込み、APIを利用するためのURLを組み立てる
@@ -127,11 +125,11 @@ function showResult(result) {
         facialExpression[k] = 10;
       }
     }
-    console.log(facialExpression);
-    score = facialExpression[0];
-    let element = document.getElementById("score");
-    element.innerHTML = `${score}/10`;
-    postForm(score);
+    // console.log(facialExpression);
+    // score = facialExpression[0];
+    // let element = document.getElementById("score");
+    // element.innerHTML = `${score}/10`;
+    // postForm(score);
 
     //チャート描画の処理
     $("#chartArea").highcharts({

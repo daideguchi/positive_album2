@@ -85,6 +85,8 @@ function fileSave($filename, $save_path,$caption,$username){
 // var_dump($_SESSION["username"]);
 // exit();
 
+
+//idをキーにした方が良い
 function getAllFile(){
   $username = $_SESSION["username"];
 
@@ -98,6 +100,21 @@ function getAllFile(){
  return $fileData;
 
 }
+
+function userinfo(){
+  $username = $_SESSION["username"];
+
+ $sql = "SELECT * FROM `users_table` WHERE `username`= '$username'";
+
+
+ $userdata = connect_to_db()->query($sql);
+// var_dump($fileData);
+// exit();
+
+ return $userdata;
+
+}
+
 
 
 

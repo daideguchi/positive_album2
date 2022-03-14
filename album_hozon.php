@@ -8,10 +8,10 @@ check_session_id();
 // var_dump($_SESSION["username"]);
 // exit();
 
-$file = $_FILES["img"];
+// $file = $_FILES["img"];
 
 
-// var_dump($file);
+// var_dump($_FILES);
 // exit();
 $username = $_SESSION["username"];
 // ファイル関連の取得
@@ -26,6 +26,9 @@ $upload_dir = "images/";
 
 $save_filename = date("YmdHis") . $filename;
 $save_path = $upload_dir . $save_filename;
+
+// var_dump($save_filename);
+// exit();
 
 // キャプションの取得
 $caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -63,16 +66,16 @@ if(!in_array(strtolower($file_ext),$allow_ext)){
 if(is_uploaded_file($tmp_path)){
     if(move_uploaded_file($tmp_path, $upload_dir . 
     $save_filename)){
-    echo $filename . "を". $upload_dir . "にアップしました";
+    // echo $filename . "を". $upload_dir . "にアップしました";
     // $fileData = array($filename, $save_path,$caption);
     //DBに保存(ファイル名、ファイルパス、キャプション)
     $result = fileSave($filename, $save_path,$caption,$username);
     
-    if($result){
-        echo "データベースに保存しました";
-    }else{
-        echo "データベースへの保存が失敗しました";
-    }
+    // if($result){
+    //     // echo "データベースに保存しました";
+    // }else{
+    //     // echo "データベースへの保存が失敗しました";
+    // }
 
     }else{
     echo "ファイルが保存できませんでした";
@@ -83,10 +86,17 @@ if(is_uploaded_file($tmp_path)){
 }
     echo"<br>";
 
-    header('Location:mypage.php');
-    exit();
-
 ?>
-  
+  <img src=./<?php echo "{$save_path}" ?> alt="">
+  <p>この画像を公開しますか？</p>
+  <p>※公開すれば、誰かからフィードバックがもらえます</p>
+
+  <br><br>
+  <form action="koukai_act.php" method="POST">
+<button type="submit" name="yes" value="1">公開する</button>
+<button type="submit" name="no" value="0">公開しない</button>
+<input type="hidden" name="save" value="<?php echo "{$save_path}" ?>">
+  </form>
 <a href="mypage.php">戻る</a>
 <p><?php $_SESSION["username"]?></p>
+

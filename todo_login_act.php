@@ -24,6 +24,9 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':username', $username, PDO::PARAM_STR);
 $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 
+// var_dump($sql);
+// exit();
+
 
 
 

@@ -34,7 +34,7 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
 <body>
 <h3 id='title'>写真登録ワーク</h3>
 <!--- 画像をアップロードさせるためのボタンのあるエリア --->
-<div id="uploadArea"><l>良い表情の写真を選択しましょう</div>
+<div id="uploadArea"><l>あなたにとって楽しかった思い出写真を選択してください</div>
 <!-- <div id="yubi"><img src="yubi.jpeg" alt=""></div>     -->
 <form action="album_hozon.php" method="POST" enctype="multipart/form-data">
 
@@ -71,13 +71,17 @@ $record = $stmt->fetch(PDO::FETCH_ASSOC);
      </div>
     <div class="resultArea2 hidden">
     <!-- <form action="album_hozon.php" method="POST"> -->
-    <h3>この写真のスコア</h3><h2 id="score" name="score"></h2>
+    <!-- <h3>この写真のスコア</h3> -->
+    <h2 id="score" name="score"></h2>
     <!-- <input type="file" name="img"> -->
     <!-- <input type="text" name="text"> -->
-        <p>この写真の感想を書いてみましょう</p>
+        <p>この写真はどんな思い出ですか？</p>
     <input type="text" name="caption">
      <button id="commit">登録する</button>
+
  </form>
+
+
     </div>
     <a href="mypage.php">マイページTOPへ戻る</a>
 

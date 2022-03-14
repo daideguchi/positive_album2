@@ -4,58 +4,14 @@ include("functions.php");
 check_session_id();
 
 $files = getAllFile();
+$userdata = userinfo();
 
-// var_dump($files);
-// exit();
-
-// $username = $_SESSION["username"];
-
-// $pdo = connect_to_db();
-
-// $sql = 'SELECT * FROM `file_table` WHERE 1';
-// $sql = 'SELECT * FROM file_table WHERE is_deleted = 0 ORDER BY deadline ASC ';
-
-
-// $stmt = $pdo->prepare($sql);
-
-// var_dump($stmt);
+// var_dump($_SESSION);
 // exit();
 
 
-// try {
-//   $status = $stmt->execute();
-// } catch (PDOException $e) {
-//   echo json_encode(["sql error" => "{$e->getMessage()}"]);
-//   exit();
-// }
-// var_dump($status);
+// var_dump($file);
 // exit();
-
-
-//GETの形式で送る（id）を飛ばすイメージ
-// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// $output1 = "";
-// $output2 = "";
-
-
-//foreachで繰り返して画面に表示させるところ
-// foreach ($result as $record) {
-//   $output1 .= "
-//     <tr>
-//       <td>{$record["deadline"]}</td>
-//       <td>{$record["todo"]}</td>
-//       <td>
-//         <a href='todo_edit.php?id={$record["id"]}'>edit</a>
-//       </td>
-//       <td>
-//         <a href='todo_delete.php?id={$record["id"]}'>delete</a>
-//       </td>
-//     </tr>
-//   ";
-// }
-// var_dump($output1);
-// exit();
-
 
 ?>
 
@@ -70,11 +26,16 @@ $files = getAllFile();
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
- <p>なりたい自分</p>
- <p>目先の目標</p>
- <!-- <div id="prof">
- </div>
- <a href="prof_setting.php">プロフィール画像を設定する</a> -->
+ 
+ <?php foreach($userdata as $user): ?>
+   <p>なりたい自分</p>:<?php echo h("{$user["naritai"]}") ?>
+  <p>目先の目標</p>:<?php echo h("{$user["mokuhyou"]}") ?>
+  <?php endforeach ?>
+ 
+
+
+ <a href="./setting/setting.php">設定する</a>
+<br>
 
 </script>
   <!-- <h2>あなたのトータルスコア</h2> -->
@@ -97,8 +58,8 @@ $files = getAllFile();
 
   <?php endforeach ?>
      <? 
-    var_dump($file);
-    exit();?>
+    // var_dump($file);
+    // exit();?>
 
 </div>
 

@@ -80,4 +80,4 @@ if(is_uploaded_file($tmp_path)){
     echo"<br>";
 ?>
   
-<a href="todo_read.php">戻る</a>
+<a href="mypage.php">戻る</a>
