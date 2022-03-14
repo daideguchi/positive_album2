@@ -11,6 +11,9 @@
 - 今後は風景写真や食べ物の写真もスコア計算して登録できるようにしたい。
 - 親切・感謝のワークとして誰かの写真にコメントする機能をつける
 
+<img width="890" alt="image" src="https://user-images.githubusercontent.com/95999068/158144239-7bc39d3b-909f-43a9-8c62-0e8c9b4b5934.png">
+
+
 ## 工夫した点，こだわった点
 
 - Cloud Vision API を使用して感情分析を行った。
