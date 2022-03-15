@@ -87,7 +87,14 @@ if(is_uploaded_file($tmp_path)){
     echo"<br>";
 
 ?>
-  <img src=./<?php echo "{$save_path}" ?> alt="">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<figure class="figure">
+  <img src=./<?php echo "{$save_path}" ?> class="figure-img img-fluid rounded" alt="">
+  </figure>
+
   <p>この画像を公開しますか？</p>
   <p>※公開すれば、誰かからフィードバックがもらえます</p>
 

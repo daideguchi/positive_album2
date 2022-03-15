@@ -21,20 +21,29 @@ $userdata = userinfo();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>DB連携型todoリスト（一覧画面）</title>
 </head>
 
 <body>
   <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
- 
+  <div class="container">
+    
  <?php foreach($userdata as $user): ?>
-   <p>なりたい自分</p>:<?php echo h("{$user["naritai"]}") ?>
-  <p>目先の目標</p>:<?php echo h("{$user["mokuhyou"]}") ?>
+  <div class="row row-cols-auto">
+   <div class="col">なりたい自分</div>
+   <div class="col"><?php echo h("{$user["naritai"]}") ?></div>
+ </div>
+ <div class="w-100"></div>
+   
+ <div class="row row-cols-auto">
+  <div class="col">目先の目標</div>
+  <div class="col"><?php echo h("{$user["mokuhyou"]}") ?></div>
   <?php endforeach ?>
- 
+ </div>
+ </div>
 
-
- <a href="./setting/setting.php">設定する</a>
+ <a href="./setting/setting.php" class="btn btn-outline-info btn-sm">設定する</a>
 <br>
 
 </script>
@@ -50,7 +59,7 @@ $userdata = userinfo();
     <h2>登録されたアルバム</h2>
 <div>
   <?php foreach($files as $file): ?>
-    <div><img src="<?php echo "{$file["file_path"]}" ?>" alt=""> 
+    <div><img src="<?php echo "{$file["file_path"]}" ?>" class="img-thumbnail" alt=""> 
     <?php $output1 ?>
     <a href='todo_delete.php?id=<?php echo "{$file["id"]}" ?>'>delete</a>
     <div><p>画像の説明：<?php echo h("{$file["description"]}") ?></p></div>

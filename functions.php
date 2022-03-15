@@ -19,13 +19,13 @@
 
 function connect_to_db()
 {
-  // $dbn = 'mysql:dbname=gsacf_d10_05;charset=utf8mb4;port=3306;host=localhost';
-  // $user = 'root';
-  // $pwd = '';
+  $dbn = 'mysql:dbname=gsacf_d10_05;charset=utf8mb4;port=3306;host=localhost';
+  $user = 'root';
+  $pwd = '';
 
-  $dbn = 'mysql:dbname=LAA1351624-3m2sih;charset=utf8mb4;port=3306;host=mysql153.phy.lolipop.lan';
-  $user = 'LAA1351624';
-  $pwd = 'kdJayFzX';
+  // $dbn = 'mysql:dbname=LAA1351624-3m2sih;charset=utf8mb4;port=3306;host=mysql153.phy.lolipop.lan';
+  // $user = 'LAA1351624';
+  // $pwd = 'kdJayFzX';
 
   try {
     return new PDO($dbn, $user, $pwd);
