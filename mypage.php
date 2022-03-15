@@ -53,7 +53,8 @@ $userdata = userinfo();
     <div><img src="<?php echo "{$file["file_path"]}" ?>" alt=""> 
     <?php $output1 ?>
     <a href='todo_delete.php?id=<?php echo "{$file["id"]}" ?>'>delete</a>
-    <div><?php echo h("{$file["description"]}") ?></div>
+    <div><p>画像の説明：<?php echo h("{$file["description"]}") ?></p></div>
+    <p>フィードバック：<?php echo h("{$file["feedback"]}")?></p>
     </div>
 
   <?php endforeach ?>

@@ -19,13 +19,13 @@
 
 function connect_to_db()
 {
-  $dbn = 'mysql:dbname=gsacf_d10_05;charset=utf8mb4;port=3306;host=localhost';
-  $user = 'root';
-  $pwd = '';
+  // $dbn = 'mysql:dbname=gsacf_d10_05;charset=utf8mb4;port=3306;host=localhost';
+  // $user = 'root';
+  // $pwd = '';
 
-  // $dbn = 'mysql:dbname=LAA1351624-3m2sih;charset=utf8mb4;port=3306;host=mysql153.phy.lolipop.lan';
-  // $user = 'LAA1351624';
-  // $pwd = 'kdJayFzX';
+  $dbn = 'mysql:dbname=LAA1351624-3m2sih;charset=utf8mb4;port=3306;host=mysql153.phy.lolipop.lan';
+  $user = 'LAA1351624';
+  $pwd = 'kdJayFzX';
 
   try {
     return new PDO($dbn, $user, $pwd);
@@ -115,6 +115,26 @@ function userinfo(){
 
 }
 
+
+function feedback_select(){
+
+    $username = $_SESSION["username"];
+//  var_dump($username);
+//  exit();
+
+
+  $sql = "SELECT * FROM `file_table` WHERE username <> '$username' AND feedback IS NULL AND koukai = 1";
+
+//  var_dump($sql);
+//  exit();
+ $feedback_select = connect_to_db()->query($sql);
+
+ return $feedback_select;
+
+//  var_dump($feedback_select);
+//  exit();
+
+}
 
 
 
