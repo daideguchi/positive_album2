@@ -137,6 +137,20 @@ function feedback_select(){
 }
 
 
+function kanjou(){
+  $username = $_SESSION["username"];
+
+ $sql = "SELECT * FROM `like_table` WHERE `username`= '$username'";
+
+
+ $kanjoudata = connect_to_db()->query($sql);
+// var_dump($fileData);
+// exit();
+
+ return $kanjoudata;
+
+}
+
 
 function h($s){
    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");

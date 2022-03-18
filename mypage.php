@@ -5,8 +5,11 @@ check_session_id();
 
 $files = getAllFile();
 $userdata = userinfo();
+$kanjoudata = kanjou();
 
-// var_dump($_SESSION);
+
+
+// var_dump($kanjoudata);
 // exit();
 
 
@@ -26,31 +29,62 @@ $userdata = userinfo();
 </head>
 
 <body>
-  <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">マイページ</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <h1>ようこそ、<?=  $_SESSION["username"]?>さん</h1>
+
+</nav>
+
+
   <div class="container">
     
  <?php foreach($userdata as $user): ?>
   <div class="row row-cols-auto">
-   <div class="col">なりたい自分</div>
+   <div class="col">なりたい自分 :</div>
    <div class="col"><?php echo h("{$user["naritai"]}") ?></div>
  </div>
  <div class="w-100"></div>
    
  <div class="row row-cols-auto">
-  <div class="col">目先の目標</div>
+  <div class="col">目先の目標 :</div>
   <div class="col"><?php echo h("{$user["mokuhyou"]}") ?></div>
   <?php endforeach ?>
  </div>
  </div>
 
  <a href="./setting/setting.php" class="btn btn-outline-info btn-sm">設定する</a>
+  <a href="kanjou.php" class="btn btn-outline-info btn-sm">感情分析</a>
+
 <br>
 
 </script>
+
+
   <!-- <h2>あなたのトータルスコア</h2> -->
 
     <br>
-        <a href="work.php">ワークを開始する</a>
+        <a href="work.php" class="btn btn-success">ワークを開始する</a>
     <br>
     <a href="todo_logout.php">ログアウトする</a>
     <br>

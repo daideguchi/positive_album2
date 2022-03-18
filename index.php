@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<h1>ポジティブアルバム（仮）</h1>
   <form action="todo_login_act.php" method="POST">
     <fieldset>
       <legend>サービスへログインする</legend>
